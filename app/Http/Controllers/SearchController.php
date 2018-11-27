@@ -11,7 +11,7 @@ class SearchController extends Controller
     public function normal(Request $request, $s)
     {
       $cacheKey = json_encode($request->all());
-      
+
       if ($request->search) {
           return redirect('/' . $request->qUrl);
       }
@@ -25,11 +25,11 @@ class SearchController extends Controller
 
       if ($request->has('doi')) {
         if (! Cache::has($cacheKey)) {
-          Cache::forever($cacheKey, $doi);
+          Cache::forever($cacheKey, $request->doi);
         }
         
         if ($sciHub) {
-            return redirect()->away($scihubUrl . '/' . $doi);
+            return redirect()->away($scihubUrl . '/' . $request->doi);
         }
 
         return view('results.doi', compact('doi', 'scihubUrl'));
