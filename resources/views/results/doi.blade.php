@@ -7,6 +7,7 @@
         <title>{{ config('app.name') }}</title>
     </head>
     <body class="bg-purple">
+
         <div class="container">
             <div class="jumbotron text-center">
               <h1 class="display-4 text-primary">Gotcha!</h1>

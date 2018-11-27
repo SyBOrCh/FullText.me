@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search', 'SearchController@store');
-
-Route::get('/{qUrl}', 'SearchController@store')->where('qUrl', '.*');
+// Route::get('/search', 'SearchController@normal');
+Route::get('{s?}/{qUrl}', 'SearchController@normal')->where('qUrl', '.*');
+Route::get('/{qUrl}', 'SearchController@normal')->where('qUrl', '.*');
