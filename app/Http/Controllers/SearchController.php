@@ -66,7 +66,5 @@ class SearchController extends Controller
 
           return view('results.doi', compact('doi', 'scihubUrl'));
         }
-
-        return redirect()->away("https://www.google.com/?q={$request->title}%20{$request->aulast}%20{$request->date}");
     }
 }
