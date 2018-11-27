@@ -10,40 +10,35 @@ class SearchController extends Controller
 {
     public function normal(Request $request, $s)
     {
-      $cacheKey = json_encode($request->query->all());
-
-      $sciHub = false;
-
-        if ($s == 's') {
-          $sciHub = true;
-        }
-
-        $scihubUrl = config('services.scihub.url');
-
-        if ($request->search) {
+      if ($request->search) {
           return redirect('/' . $request->qUrl);
+      }
+
+      $scihubUrl = config('services.scihub.url');
+      if ($s == 's') {
+        $sciHub = true;
+      } else {
+        $sciHub = false;
+      }
+
+      if ($request->has('doi')) {
+        if (! Cache::has($cacheKey)) {
+          Cache::forever($cacheKey, $doi);
         }
+        
+        if ($sciHub) {
+            return redirect()->away($scihubUrl . '/' . $doi);
+        }
+
+        return view('results.doi', compact('doi', 'scihubUrl'));
+      }
 
         /**
-         * Cache  
-         * Do we already have this URL in the cache?
+         * First see if we have a Cache  
+         * Before searching Google Scholar 
          */
         if (Cache::has($cacheKey)) {
           $doi = Cache::get($cacheKey);
-
-          session()->flash('message', 'Resolved from cache');
-          
-          if ($sciHub) {
-            return redirect()->away($scihubUrl . '/' . $doi);
-          }
-
-          return view('results.doi', compact('doi', 'scihubUrl'));
-        }
-
-        if ($request->has('doi')) {
-          $doi = $request->doi;
-          // Store the found DOI in the Cache 
-          Cache::forever($cacheKey, $doi);
           
           if ($sciHub) {
             return redirect()->away($scihubUrl . '/' . $doi);
@@ -53,7 +48,7 @@ class SearchController extends Controller
         }
 
         /**
-         * The link does not contain a DOI parameter
+         * No DOI, no Cache 
          * Let's try Google Scholar
          */
         $googleScholar = new GoogleScholar($author = $request->aulast, $title = $request->title, $date = $request->date);
