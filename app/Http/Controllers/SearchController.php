@@ -24,8 +24,10 @@ class SearchController extends Controller
       }
 
       if ($request->has('doi')) {
+        $doi = $request->doi;
+        
         if (! Cache::has($cacheKey)) {
-          Cache::forever($cacheKey, $request->doi);
+          Cache::forever($cacheKey, $doi);
         }
         
         if ($sciHub) {
