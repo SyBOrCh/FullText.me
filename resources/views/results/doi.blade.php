@@ -13,7 +13,9 @@
               <p class="lead">We've found the article. How would you like to continue?</p>
 
               <a href="https://doi.org/{{ $doi }}" role="button" class="btn btn-primary btn-lg mr-4 mb-3">Open normally</a>
-              <a href="{{ $scihubUrl }}/{{ $doi }}" role="button" class="btn btn-outline-secondary btn-lg mb-3">Open with Sci-Hub </a>
+              <a href="{{ $scihubUrl }}/{{ $doi }}" role="button" style="overflow: hidden;" class="btn btn-success btn-lg mb-3">
+                Open with Sci-Hub <img src="/img/key.svg" style="width: 1.2rem;">
+            </a>
             </div>
         </div>
     </body>
