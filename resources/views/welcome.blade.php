@@ -42,17 +42,13 @@
                     class="btn btn-outline-secondary" 
                     style="border-style: dotted; cursor: default" 
                     href="javascript:(function(){ let links = document.querySelectorAll(&#x27;[data-tracking-action=&#x22;full text&#x22;]&#x27;); links.forEach(function (link) { link.href = &#x22;{{ config('app.url') }}/&#x22; + link.href; }); return alert(&#x27;Full Text - Ready to go&#x27;); })();"
-                  >
-                    Reaxys FullText 
-                  </a>
+                  >Reaxys FullText</a>
                  <a 
                     onclick="preventDefault();" 
                     class="btn btn-outline-secondary" 
                     style="border-style:dotted; cursor: default;" 
                     href="javascript:(function(){ let links = document.querySelectorAll(&#x27;[data-tracking-action=&#x22;full text&#x22;]&#x27;); links.forEach(function (link) { link.href = &#x22;{{ config('app.url') }}/s/&#x22; + link.href; }); return alert(&#x27;Full Text - Ready to go&#x27;); })();"
-                  >
-                    Reaxys FullText (SciHub)
-                  </a>
+                  >Reaxys FullText (SciHub)</a>
               </div>
             </div>
         </div>
