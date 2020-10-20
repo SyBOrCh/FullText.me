@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
         <title>{{ config('app.name') }}</title>
+        <script src="https://ox.fulltext.me/script.js" data-site="QJUISVOT" defer></script>
     </head>
     <body class="bg-purple">
         <div class="container">
