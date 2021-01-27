@@ -34,7 +34,7 @@
                 <p >
                   Did you know you can prefix "{{ config('app.url') }}" to your worldcat url? You can use:
                   <br>
-                  <span class="text-primary">{{ config('app.url') }}</span><span class="text-secondary">https://vu.on.worldcat.org/atoztitles/link?aulast=...&title=...&volume=...&issue=...&coden=...</span>
+                  <span class="text-primary">{{ config('app.url') }}/</span><span class="text-secondary">https://vu.on.worldcat.org/atoztitles/link?aulast=...&title=...&volume=...&issue=...&coden=...</span>
                 </p>
                 Bookmarklets (drag to bookmark bar): <br>
                  <a
